@@ -15,6 +15,6 @@ providers:
 certificatesResolvers:
   le:
     acme:
-      email: teintexpress@copelia.com
+      email: teintexpress@copelia.fr
       storage: /letsencrypt/acme.json
       httpChallenge: { entryPoint: web }

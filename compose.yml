@@ -7,6 +7,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/ssl/certs/_.copelia.fr.crt:/certs/_.copelia.fr.crt:ro
       - /etc/ssl/keys/copelia.fr_private.key:/certs/copelia.fr_private.key:ro
+      - /etc/traefik/dynamic:/dynamic:ro
     ports: ["80:80", "443:443"]
     networks: ["traefik-public"]
     restart: unless-stopped

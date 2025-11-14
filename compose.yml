@@ -5,6 +5,8 @@ services:
       - ./traefik.yml:/traefik.yml:ro
       - ./acme.json:/letsencrypt/acme.json
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/ssl/certs/_.copelia.fr.crt:/certs/_.copelia.fr.crt:ro
+      - /etc/ssl/keys/copelia.fr_private.key:/certs/copelia.fr_private.key:ro
     ports: ["80:80", "443:443"]
     networks: ["traefik-public"]
     restart: unless-stopped

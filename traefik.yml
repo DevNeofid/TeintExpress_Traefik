@@ -5,16 +5,12 @@ entryPoints:
       http:
         { redirections: { entryPoint: { to: "websecure", scheme: "https" } } },
     }
-  websecure: { address: ":443" }
+  websecure: { address: ":443", http: { tls: {} } }
 
 providers:
   docker:
     network: traefik-public
     exposedByDefault: false
   file:
-    directory: "/dynamic"
+    directory: "/etc/traefik/dynamic"
     watch: true
-# tls:
-#   certificates:
-#     - certFile: /certs/_.copelia.fr.crt
-#       keyFile: /certs/copelia.fr_private.key

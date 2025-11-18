@@ -1,6 +1,16 @@
 services:
   traefik:
     image: traefik:v3
+    environment:
+      # # On laisse le proxy actif pour l'extérieur si besoin :
+      # - HTTP_PROXY=http://192.168.6.52:8080
+      # - http_proxy=http://192.168.6.52:8080
+      # - HTTPS_PROXY=http://192.168.6.52:8080
+      # - https_proxy=http://192.168.6.52:8080
+
+      # Mais on exclut les IP Docker et localhost
+      - NO_PROXY=127.0.0.1,localhost,172.16.0.0/12
+      - no_proxy=127.0.0.1,localhost,172.16.0.0/12
     volumes:
       - ./traefik.yml:/etc/traefik/traefik.yml:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
